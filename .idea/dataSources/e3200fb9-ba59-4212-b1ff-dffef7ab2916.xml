@@ -9,8 +9,8 @@
     </database>
     <schema id="3" parent="2" name="public">
       <ObjectId>2200</ObjectId>
-      <IntrospectionTimestamp>2017-04-25.12:00:34.647</IntrospectionTimestamp>
-      <IntrospectionStateNumber>599</IntrospectionStateNumber>
+      <IntrospectionTimestamp>2017-04-26.09:27:19.439</IntrospectionTimestamp>
+      <IntrospectionStateNumber>611</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -77,19 +77,31 @@
       <ObjectId>16570</ObjectId>
       <StateNumber>591</StateNumber>
     </table>
-    <table id="18" parent="3" name="reader">
+    <table id="18" parent="3" name="journal">
+      <ObjectId>16658</ObjectId>
+      <StateNumber>611</StateNumber>
+    </table>
+    <table id="19" parent="3" name="lesson">
+      <ObjectId>16613</ObjectId>
+      <StateNumber>611</StateNumber>
+    </table>
+    <table id="20" parent="3" name="reader">
       <ObjectId>16546</ObjectId>
       <StateNumber>591</StateNumber>
     </table>
-    <table id="19" parent="3" name="students">
+    <table id="21" parent="3" name="student">
       <ObjectId>16598</ObjectId>
-      <StateNumber>599</StateNumber>
+      <StateNumber>611</StateNumber>
     </table>
-    <table id="20" parent="3" name="users">
+    <table id="22" parent="3" name="study_group">
+      <ObjectId>16605</ObjectId>
+      <StateNumber>605</StateNumber>
+    </table>
+    <table id="23" parent="3" name="users">
       <ObjectId>16589</ObjectId>
       <StateNumber>598</StateNumber>
     </table>
-    <column id="21" parent="15" name="book_id">
+    <column id="24" parent="15" name="book_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -97,38 +109,38 @@
       <SequenceName>book_book_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;book_book_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="22" parent="15" name="book_author">
+    <column id="25" parent="15" name="book_author">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>588</StateNumber>
     </column>
-    <column id="23" parent="15" name="book_title">
+    <column id="26" parent="15" name="book_title">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>588</StateNumber>
     </column>
-    <column id="24" parent="15" name="book_isbn">
+    <column id="27" parent="15" name="book_isbn">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>588</StateNumber>
     </column>
-    <column id="25" parent="15" name="book_year">
+    <column id="28" parent="15" name="book_year">
       <Position>5</Position>
       <DataType>integer|0</DataType>
       <StateNumber>588</StateNumber>
     </column>
-    <index id="26" parent="15" name="book_pkey">
+    <index id="29" parent="15" name="book_pkey">
       <ObjectId>16542</ObjectId>
       <ColNames>book_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="27" parent="15" name="book_pkey">
+    <key id="30" parent="15" name="book_pkey">
       <ObjectId>16543</ObjectId>
       <ColNames>book_id</ColNames>
       <UnderlyingIndexName>book_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="28" parent="16" name="bin_id">
+    <column id="31" parent="16" name="bin_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -136,36 +148,36 @@
       <SequenceName>book_instance_bin_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;book_instance_bin_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="29" parent="16" name="bin_uuid">
+    <column id="32" parent="16" name="bin_uuid">
       <Position>2</Position>
       <DataType>uuid|0</DataType>
       <StateNumber>590</StateNumber>
     </column>
-    <column id="30" parent="16" name="book_book_id">
+    <column id="33" parent="16" name="book_book_id">
       <Position>3</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>590</StateNumber>
     </column>
-    <index id="31" parent="16" name="bin_pkey">
+    <index id="34" parent="16" name="bin_pkey">
       <ObjectId>16561</ObjectId>
       <ColNames>bin_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="32" parent="16" name="bin_pkey">
+    <key id="35" parent="16" name="bin_pkey">
       <ObjectId>16562</ObjectId>
       <ColNames>bin_id</ColNames>
       <UnderlyingIndexName>bin_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="33" parent="16" name="fk_book_instance__book">
+    <foreign-key id="36" parent="16" name="fk_book_instance__book">
       <ObjectId>16563</ObjectId>
       <ColNames>book_book_id</ColNames>
       <RefTableName>book</RefTableName>
       <RefKeyName>book_pkey</RefKeyName>
       <RefColNames>book_id</RefColNames>
     </foreign-key>
-    <column id="34" parent="17" name="bkg_id">
+    <column id="37" parent="17" name="bkg_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -173,59 +185,149 @@
       <SequenceName>booking_bkg_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;booking_bkg_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="35" parent="17" name="rdr_reader_id">
+    <column id="38" parent="17" name="rdr_reader_id">
       <Position>2</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>591</StateNumber>
     </column>
-    <column id="36" parent="17" name="book_book_id">
+    <column id="39" parent="17" name="book_book_id">
       <Position>3</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
       <StateNumber>591</StateNumber>
     </column>
-    <column id="37" parent="17" name="bkg_start_date">
+    <column id="40" parent="17" name="bkg_start_date">
       <Position>4</Position>
       <DataType>date|0</DataType>
       <StateNumber>591</StateNumber>
     </column>
-    <column id="38" parent="17" name="bkg_return_date">
+    <column id="41" parent="17" name="bkg_return_date">
       <Position>5</Position>
       <DataType>date|0</DataType>
       <StateNumber>591</StateNumber>
     </column>
-    <column id="39" parent="17" name="bkg_finish_date">
+    <column id="42" parent="17" name="bkg_finish_date">
       <Position>6</Position>
       <DataType>date|0</DataType>
       <StateNumber>591</StateNumber>
     </column>
-    <index id="40" parent="17" name="booking_pkey">
+    <index id="43" parent="17" name="booking_pkey">
       <ObjectId>16574</ObjectId>
       <ColNames>bkg_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="41" parent="17" name="booking_pkey">
+    <key id="44" parent="17" name="booking_pkey">
       <ObjectId>16575</ObjectId>
       <ColNames>bkg_id</ColNames>
       <UnderlyingIndexName>booking_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="42" parent="17" name="fk_booking_reader">
+    <foreign-key id="45" parent="17" name="fk_booking_reader">
       <ObjectId>16576</ObjectId>
       <ColNames>rdr_reader_id</ColNames>
       <RefTableName>reader</RefTableName>
       <RefKeyName>rdr_pkey</RefKeyName>
       <RefColNames>rdr_id</RefColNames>
     </foreign-key>
-    <foreign-key id="43" parent="17" name="fk_booking__book">
+    <foreign-key id="46" parent="17" name="fk_booking__book">
       <ObjectId>16581</ObjectId>
       <ColNames>book_book_id</ColNames>
       <RefTableName>book</RefTableName>
       <RefKeyName>book_pkey</RefKeyName>
       <RefColNames>book_id</RefColNames>
     </foreign-key>
-    <column id="44" parent="18" name="rdr_id">
+    <column id="47" parent="18" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>611</StateNumber>
+    </column>
+    <column id="48" parent="18" name="lesson_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>611</StateNumber>
+    </column>
+    <column id="49" parent="18" name="student_id">
+      <Position>3</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>611</StateNumber>
+    </column>
+    <index id="50" parent="18" name="pk_journal_id">
+      <ObjectId>16661</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="51" parent="18" name="pk_journal_id">
+      <ObjectId>16662</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>pk_journal_id</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="52" parent="18" name="fk_journal_lesson">
+      <ObjectId>16663</ObjectId>
+      <ColNames>lesson_id</ColNames>
+      <RefTableName>lesson</RefTableName>
+      <RefKeyName>fk_lesson</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="53" parent="18" name="fk_journal_student">
+      <ObjectId>16668</ObjectId>
+      <ColNames>student_id</ColNames>
+      <RefTableName>student</RefTableName>
+      <RefKeyName>student__pk</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="54" parent="19" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>605</StateNumber>
+    </column>
+    <column id="55" parent="19" name="study_group_id">
+      <Position>2</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>605</StateNumber>
+    </column>
+    <column id="56" parent="19" name="lesson_date">
+      <Position>3</Position>
+      <DataType>timestamp|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>605</StateNumber>
+    </column>
+    <column id="57" parent="19" name="room">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>605</StateNumber>
+    </column>
+    <column id="58" parent="19" name="description">
+      <Position>5</Position>
+      <DataType>varchar(2000)|0</DataType>
+      <StateNumber>605</StateNumber>
+    </column>
+    <index id="59" parent="19" name="fk_lesson">
+      <ObjectId>16619</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="60" parent="19" name="fk_lesson">
+      <ObjectId>16620</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>fk_lesson</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="61" parent="19" name="fk_lesson_study_group">
+      <ObjectId>16621</ObjectId>
+      <ColNames>study_group_id</ColNames>
+      <RefTableName>study_group</RefTableName>
+      <RefKeyName>pk_study_group_id</RefKeyName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="62" parent="20" name="rdr_id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -233,38 +335,38 @@
       <SequenceName>reader_rdr_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;reader_rdr_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="45" parent="18" name="rdr_first_name">
+    <column id="63" parent="20" name="rdr_first_name">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>589</StateNumber>
     </column>
-    <column id="46" parent="18" name="rdr_second_name">
+    <column id="64" parent="20" name="rdr_second_name">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>589</StateNumber>
     </column>
-    <column id="47" parent="18" name="rdr_last_name">
+    <column id="65" parent="20" name="rdr_last_name">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>589</StateNumber>
     </column>
-    <column id="48" parent="18" name="rdr_passport_number">
+    <column id="66" parent="20" name="rdr_passport_number">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>589</StateNumber>
     </column>
-    <index id="49" parent="18" name="rdr_pkey">
+    <index id="67" parent="20" name="rdr_pkey">
       <ObjectId>16553</ObjectId>
       <ColNames>rdr_id</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="50" parent="18" name="rdr_pkey">
+    <key id="68" parent="20" name="rdr_pkey">
       <ObjectId>16554</ObjectId>
       <ColNames>rdr_id</ColNames>
       <UnderlyingIndexName>rdr_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="51" parent="19" name="id">
+    <column id="69" parent="21" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -272,22 +374,54 @@
       <SequenceName>students_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;students_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="52" parent="19" name="name">
+    <column id="70" parent="21" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>599</StateNumber>
     </column>
-    <column id="53" parent="19" name="group_id">
+    <column id="71" parent="21" name="group_id">
       <Position>3</Position>
       <DataType>integer|0</DataType>
       <StateNumber>599</StateNumber>
     </column>
-    <column id="54" parent="19" name="age">
+    <column id="72" parent="21" name="age">
       <Position>4</Position>
       <DataType>integer|0</DataType>
       <StateNumber>599</StateNumber>
     </column>
-    <column id="55" parent="20" name="id">
+    <index id="73" parent="21" name="student__pk">
+      <ObjectId>16656</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="74" parent="21" name="student__pk">
+      <ObjectId>16657</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>student__pk</UnderlyingIndexName>
+    </key>
+    <column id="75" parent="22" name="id">
+      <Position>1</Position>
+      <DataType>integer|0</DataType>
+      <NotNull>1</NotNull>
+      <StateNumber>603</StateNumber>
+    </column>
+    <column id="76" parent="22" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+      <StateNumber>603</StateNumber>
+    </column>
+    <index id="77" parent="22" name="pk_study_group_id">
+      <ObjectId>16608</ObjectId>
+      <ColNames>id</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="78" parent="22" name="pk_study_group_id">
+      <ObjectId>16609</ObjectId>
+      <ColNames>id</ColNames>
+      <UnderlyingIndexName>pk_study_group_id</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="79" parent="23" name="id">
       <Position>1</Position>
       <DataType>integer|0</DataType>
       <NotNull>1</NotNull>
@@ -295,17 +429,17 @@
       <SequenceName>users_id_seq</SequenceName>
       <DefaultExpression>nextval(&apos;users_id_seq&apos;::regclass)</DefaultExpression>
     </column>
-    <column id="56" parent="20" name="login">
+    <column id="80" parent="23" name="login">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>596</StateNumber>
     </column>
-    <column id="57" parent="20" name="password">
+    <column id="81" parent="23" name="password">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <StateNumber>596</StateNumber>
     </column>
-    <column id="58" parent="20" name="is_block">
+    <column id="82" parent="23" name="is_block">
       <Position>4</Position>
       <DataType>boolean|0</DataType>
       <StateNumber>598</StateNumber>

@@ -18,7 +18,7 @@ public class StudentDaoImpl implements StudentDao {
         Connection connection = Connect.initConnection();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("select *"+
-                    " from students");
+                    " from student");
 
             ResultSet result = preparedStatement.executeQuery();
 
@@ -98,7 +98,7 @@ public class StudentDaoImpl implements StudentDao {
     public boolean insert(int id, String name, int age, int group_id) {
         Connection connection = Connect.initConnection();
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("insert into students (" +
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into student (" +
                     " id, name, age, group_id) values (?, ?, ?, ?)");
             preparedStatement.setInt(1, id);
             preparedStatement.setString(2, name);

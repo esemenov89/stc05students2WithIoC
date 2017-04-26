@@ -11,10 +11,13 @@
     <!--<beans:constructor-arg name="userDAO" ref="userDao"/>-->
 </beans:bean>
 
+
 <beans:bean id="studentService" class="main.services.StudentServiceImpl">
     <!--<beans:property name="studentDao" ref="studentDao"/>-->
     <!--<beans:constructor-arg name="userDAO" ref="userDao"/>-->
 </beans:bean>
+
+    <beans:bean class = "main.utils.BenchmarkBeanPostProcessor" />
 
 <beans:bean id="userDao" class="main.models.dao.UserDaoImpl"/>
 <beans:bean id="studentDao" class="main.models.dao.StudentDaoImpl"/>
